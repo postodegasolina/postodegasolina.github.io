@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 formas de economizar combustível — Posto de Gasolina</title>
+<meta name="description" content="Economizar combustível não é dirigir devagar o tempo todo: é eliminar desperdícios. Pequenas mudanças de hábito somam litros por mês — e centenas de r">
+<meta name="theme-color" content="#14532d">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--pri:#14532d;--pri2:#166534;--acc:#ea580c;--accd:#c2410c;--accbg:#ffedd5;--bg:#f4f6f3;--card:#fff;--text:#1c2420;--muted:#5b6b62;--border:#dfe7df;--green:#15803d;--greenbg:#dcfce7;--red:#b91c1c;--redbg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 14px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+a{color:var(--accd)}
+header{background:var(--pri);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px}
+.brand b span{color:var(--acc)}
+.brand small{display:block;font-size:11.5px;color:#c8d6cc;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#d7e5db;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--pri2);color:#fff}
+.hero{background:linear-gradient(135deg,var(--pri) 0%,var(--pri2) 100%);color:#fff;padding:44px 0 40px}
+.hero h1{font-size:clamp(26px,5vw,40px);line-height:1.2;max-width:760px}
+.hero h1 span{color:var(--acc)}
+.hero p{color:#d7e5db;font-size:16px;max-width:720px;margin-top:12px}
+.hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;font-weight:600;border-radius:999px;padding:6px 13px}
+section{padding:34px 0 8px}
+section h2{font-size:24px;margin-bottom:6px}
+.section-sub{color:var(--muted);font-size:15px;max-width:760px;margin-bottom:20px}
+.calc-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:860px){.calc-grid{grid-template-columns:1fr 1fr}.calc-grid .wide{grid-column:1 / -1}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 20px;border-top:4px solid var(--acc)}
+.card h3{font-size:18px;margin-bottom:2px}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accd)}
+.card .desc{font-size:14px;color:var(--muted);margin:6px 0 16px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+.field label small{font-weight:400;color:var(--muted)}
+.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;outline:none;background:#fff;color:var(--text)}
+.field input:focus,.field select:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+.field-row{display:grid;grid-template-columns:1fr;gap:0 12px}
+@media(min-width:560px){.field-row{grid-template-columns:1fr 1fr}}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:15px;font-weight:800;min-height:46px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--accd)}
+.results{display:none;margin-top:16px}
+.results.show{display:block}
+.results h4{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:560px){.stat-grid{grid-template-columns:repeat(3,1fr)}}
+.stat{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stat.hero{background:var(--accbg);border-color:var(--border)}
+.stat .k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-size:19px;font-weight:800;margin-top:3px;word-break:break-word}
+.stat.wide{grid-column:1 / -1}
+.verdict{margin-top:10px;border-radius:10px;padding:11px 14px;font-size:14px;font-weight:600}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.verdict.warn{background:var(--accbg);color:var(--accd)}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px}
+.formula{font-size:13px;color:var(--muted);background:#f8fafc;border:1px dashed var(--border);border-radius:8px;padding:8px 11px;margin-top:12px}
+.formula code{color:var(--pri);font-weight:600}
+.table-wrap{overflow-x:auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th{background:var(--pri);color:#fff;text-align:left;padding:11px 12px;font-size:13px}
+td{padding:10px 12px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8fafc}
+.guide-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.guide-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.guide-grid{grid-template-columns:1fr 1fr 1fr}}
+.guide{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 18px;border-left:4px solid var(--acc)}
+.guide .g-tag{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accd)}
+.guide h3{font-size:16.5px;margin:5px 0 7px}
+.guide p{font-size:14px;color:#334155}
+.guide-link{margin-top:10px;font-size:14px;font-weight:700}
+.guide-link a{text-decoration:none}
+.guide-link a:hover{text-decoration:underline}
+.faq{max-width:820px}
+.faq-item{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.faq-item button{width:100%;text-align:left;background:none;border:0;padding:16px 18px;font-size:15.5px;font-weight:700;font-family:inherit;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq-item button .chev{color:var(--accd);font-size:20px;flex:none}
+.faq-item .answer{display:none;padding:0 18px 16px;font-size:14.5px;color:#334155}
+.faq-item.open .answer{display:block}
+.faq-item.open .chev{transform:rotate(45deg)}
+.about{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 20px}
+.about p{font-size:14.5px;color:#334155;margin-bottom:10px}
+footer{background:var(--pri);color:#b9c9bf;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#b9c9bf;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid rgba(255,255,255,.15);margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accd);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--acc);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--pri);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.callout{background:var(--accbg);border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px}
+.related{background:var(--accbg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+</style>
+</head>
+<body>
+<header><div class="header-in"><a class="brand" href="../index.html"><span class="mark">⛽</span><span><b>Posto de <span>Gasolina</span></b><small>postodegasolina.github.io</small></span></a><nav class="main-nav"><a href="../index.html#calculadoras">Calculadoras</a><a href="../index.html#referencia">Tabela de referência</a><a href="../index.html#guias">Guias</a><a href="../index.html#faq">Perguntas frequentes</a></nav></div></header>
+<main class="wrap article">
+<p class="back"><a href="../index.html">&larr; Voltar ao Posto de Gasolina</a></p>
+<p class="crumb">Guias / Posto de Gasolina</p>
+<h1>10 formas de economizar combustível</h1>
+<p class="lede">Economizar combustível não é dirigir devagar o tempo todo: é eliminar desperdícios. Pequenas mudanças de hábito somam litros por mês — e centenas de reais por ano.</p>
+<h2>Dirija com suavidade</h2>
+<p>Acelerações bruscas e freadas fortes são os maiores vilões do consumo. Acelere de forma progressiva, antecipe o trânsito olhando longe e solte o acelerador antes do semáforo, deixando o carro desacelerar sozinho. Em trajetos urbanos, essa técnica pode economizar de 10% a 20% de combustível.</p>
+<p>Na estrada, use o piloto automático quando houver: manter a velocidade constante gasta menos que acelerar e frear o tempo todo. E evite velocidades muito altas — acima de 110 km/h, o consumo sobe rápido por causa da resistência do ar.</p>
+<h2>Cuide do carro</h2>
+<p>Um carro bem cuidado gasta menos. Pneus calibrados, filtro de ar limpo, velas em bom estado e óleo na especificação certa fazem diferença real no consumo. O filtro de ar entupido, por exemplo, faz o motor trabalhar mais para puxar o ar.</p>
+<p>Faça as revisões no prazo do manual e não adie a troca de velas e filtros. Um motor desregulado pode gastar 10% a mais de combustível sem apresentar nenhum sintoma óbvio.</p>
+<ul>
+<li>Calibre os pneus todo mês, sempre frios.</li>
+<li>Troque o filtro de ar no prazo do manual.</li>
+<li>Use o óleo com a especificação indicada pelo fabricante.</li>
+</ul>
+<h2>Elimine desperdícios</h2>
+<p>O ar-condicionado aumenta o consumo, principalmente na cidade. Em velocidades baixas, abrir as janelas pode ser mais econômico; na estrada, feche as janelas e use o ar — a resistência do ar com janelas abertas gasta mais. Desligue o ar alguns minutos antes de chegar ao destino.</p>
+<p>Tire peso desnecessário do porta-malas e retire o bagageiro de teto quando não estiver usando: cada 50 kg extras aumentam o consumo, e o bagageiro vazio piora a aerodinâmica. Evite deixar o motor ligado parado por muito tempo — se a parada passar de um minuto, desligue.</p>
+<ul>
+<li>Retire o bagageiro de teto quando não usar.</li>
+<li>Esvazie o porta-malas de objetos pesados e desnecessários.</li>
+<li>Desligue o motor em paradas longas.</li>
+<li>Planeje o trajeto para evitar congestionamentos.</li>
+<li>Abasteça com o combustível certo para o seu carro — e compare os preços.</li>
+</ul>
+
+<div class="callout">A maior economia vem de três hábitos: manter a velocidade constante, cuidar dos pneus e tirar peso desnecessário do carro. Comece por eles.</div>
+<div class="related"><h3>Outros guias do site</h3><ul><li><a href="gasolina-mais-barata-perto-de-voce.html">Como encontrar a gasolina mais barata perto de você</a></li><li><a href="servicos-do-posto-explicados.html">Serviços do posto explicados: carregamento EV, diesel, lava-rápido e ar</a></li><li><a href="diesel-vs-gasolina.html">Diesel vs gasolina — o que saber</a></li><li><a href="carregamento-carros-eletricos-postos.html">Carregamento de carros elétricos em postos: o que esperar</a></li><li><a href="seguranca-postos-a-noite.html">Dicas de segurança em postos à noite</a></li></ul></div>
+</main>
+<footer><div class="wrap"><div class="cols"><div><h4>Posto de Gasolina</h4><p>Guias e calculadoras gratuitas para motoristas brasileiros: custo de combustível, consumo em km/L, etanol vs gasolina e elétrico vs combustão.</p></div><div><h4>Guias</h4><ul><li><a href="gasolina-mais-barata-perto-de-voce.html">Como encontrar a gasolina mais barata perto de você</a></li><li><a href="servicos-do-posto-explicados.html">Serviços do posto explicados: carregamento EV, diesel, lava-rápido e ar</a></li><li><a href="economizar-combustivel-10-formas.html">10 formas de economizar combustível</a></li><li><a href="diesel-vs-gasolina.html">Diesel vs gasolina — o que saber</a></li><li><a href="carregamento-carros-eletricos-postos.html">Carregamento de carros elétricos em postos: o que esperar</a></li><li><a href="seguranca-postos-a-noite.html">Dicas de segurança em postos à noite</a></li></ul></div><div><h4>Calculadoras</h4><ul><li><a href="../index.html#calculadoras">Calculadora de custo de combustível</a></li><li><a href="../index.html#calculadoras">Elétrico vs combustão</a></li><li><a href="../index.html#calculadoras">Etanol vs gasolina — qual compensa?</a></li></ul></div></div><p class="copy">© 2026 Posto de Gasolina — Conteúdo informativo e gratuito. Os preços e o consumo reais variam por posto, cidade e veículo.</p></div></footer>
+</body>
+</html>
