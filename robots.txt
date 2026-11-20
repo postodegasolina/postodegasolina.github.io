@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://postodegasolina.github.io/sitemap.xml

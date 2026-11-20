@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posto de Gasolina — Encontre gasolina barata perto de você</title>
+<meta name="description" content="Posto de Gasolina: calculadoras gratuitas de custo de combustível, consumo em km/L, viagem, etanol vs gasolina e elétrico vs combustão, além de guias para economizar no posto.">
+<meta name="theme-color" content="#14532d">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+:root{--pri:#14532d;--pri2:#166534;--acc:#ea580c;--accd:#c2410c;--accbg:#ffedd5;--bg:#f4f6f3;--card:#fff;--text:#1c2420;--muted:#5b6b62;--border:#dfe7df;--green:#15803d;--greenbg:#dcfce7;--red:#b91c1c;--redbg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 14px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+a{color:var(--accd)}
+header{background:var(--pri);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px}
+.brand b span{color:var(--acc)}
+.brand small{display:block;font-size:11.5px;color:#c8d6cc;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#d7e5db;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--pri2);color:#fff}
+.hero{background:linear-gradient(135deg,var(--pri) 0%,var(--pri2) 100%);color:#fff;padding:44px 0 40px}
+.hero h1{font-size:clamp(26px,5vw,40px);line-height:1.2;max-width:760px}
+.hero h1 span{color:var(--acc)}
+.hero p{color:#d7e5db;font-size:16px;max-width:720px;margin-top:12px}
+.hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13px;font-weight:600;border-radius:999px;padding:6px 13px}
+section{padding:34px 0 8px}
+section h2{font-size:24px;margin-bottom:6px}
+.section-sub{color:var(--muted);font-size:15px;max-width:760px;margin-bottom:20px}
+.calc-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:860px){.calc-grid{grid-template-columns:1fr 1fr}.calc-grid .wide{grid-column:1 / -1}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 20px;border-top:4px solid var(--acc)}
+.card h3{font-size:18px;margin-bottom:2px}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accd)}
+.card .desc{font-size:14px;color:var(--muted);margin:6px 0 16px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+.field label small{font-weight:400;color:var(--muted)}
+.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;outline:none;background:#fff;color:var(--text)}
+.field input:focus,.field select:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(0,0,0,.08)}
+.field-row{display:grid;grid-template-columns:1fr;gap:0 12px}
+@media(min-width:560px){.field-row{grid-template-columns:1fr 1fr}}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:15px;font-weight:800;min-height:46px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--accd)}
+.results{display:none;margin-top:16px}
+.results.show{display:block}
+.results h4{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:560px){.stat-grid{grid-template-columns:repeat(3,1fr)}}
+.stat{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stat.hero{background:var(--accbg);border-color:var(--border)}
+.stat .k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-size:19px;font-weight:800;margin-top:3px;word-break:break-word}
+.stat.wide{grid-column:1 / -1}
+.verdict{margin-top:10px;border-radius:10px;padding:11px 14px;font-size:14px;font-weight:600}
+.verdict.ok{background:var(--greenbg);color:var(--green)}
+.verdict.warn{background:var(--accbg);color:var(--accd)}
+.verdict.bad{background:var(--redbg);color:var(--red)}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px}
+.formula{font-size:13px;color:var(--muted);background:#f8fafc;border:1px dashed var(--border);border-radius:8px;padding:8px 11px;margin-top:12px}
+.formula code{color:var(--pri);font-weight:600}
+.table-wrap{overflow-x:auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th{background:var(--pri);color:#fff;text-align:left;padding:11px 12px;font-size:13px}
+td{padding:10px 12px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8fafc}
+.guide-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.guide-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.guide-grid{grid-template-columns:1fr 1fr 1fr}}
+.guide{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 18px;border-left:4px solid var(--acc)}
+.guide .g-tag{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accd)}
+.guide h3{font-size:16.5px;margin:5px 0 7px}
+.guide p{font-size:14px;color:#334155}
+.guide-link{margin-top:10px;font-size:14px;font-weight:700}
+.guide-link a{text-decoration:none}
+.guide-link a:hover{text-decoration:underline}
+.faq{max-width:820px}
+.faq-item{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.faq-item button{width:100%;text-align:left;background:none;border:0;padding:16px 18px;font-size:15.5px;font-weight:700;font-family:inherit;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq-item button .chev{color:var(--accd);font-size:20px;flex:none}
+.faq-item .answer{display:none;padding:0 18px 16px;font-size:14.5px;color:#334155}
+.faq-item.open .answer{display:block}
+.faq-item.open .chev{transform:rotate(45deg)}
+.about{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 20px}
+.about p{font-size:14.5px;color:#334155;margin-bottom:10px}
+footer{background:var(--pri);color:#b9c9bf;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#b9c9bf;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid rgba(255,255,255,.15);margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accd);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--acc);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--pri);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.callout{background:var(--accbg);border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px}
+.related{background:var(--accbg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+</style>
+</head>
+<body>
+<header><div class="header-in"><a class="brand" href="index.html"><span class="mark">⛽</span><span><b>Posto de <span>Gasolina</span></b><small>postodegasolina.github.io</small></span></a><nav class="main-nav"><a href="index.html#calculadoras">Calculadoras</a><a href="index.html#referencia">Tabela de referência</a><a href="index.html#guias">Guias</a><a href="index.html#faq">Perguntas frequentes</a></nav></div></header>
+<section class="hero"><div class="wrap"><h1>Encontre <span>gasolina barata</span> perto de você — e gaste menos em cada viagem.</h1><p>Calculadoras gratuitas em português para planejar o abastecimento: custo por viagem, consumo em km/L, etanol ou gasolina, elétrico ou combustão. Sem cadastro, sem aplicativo — tudo funciona no navegador.</p><div class="badges"><span class="badge">Preços em R$/L</span><span class="badge">Consumo em km/L</span><span class="badge">100% gratuito</span><span class="badge">Funciona no celular</span></div></div></section>
+<main class="wrap">
+<section id="calculadoras"><h2>Calculadoras de combustível</h2><p class="section-sub">Digite os valores do seu carro e do posto. Os resultados aparecem na hora, direto no navegador.</p><div class="calc-grid"><article class="card"><p class="tag">Custo</p><h3>Calculadora de custo de combustível</h3><p class="desc">Quanto vai custar o combustível da sua viagem ou do seu mês.</p><div class="field-row"><div class="field"><label>Distância (km)</label><input id="c1d" type="number" value="300" min="0"></div><div class="field"><label>Consumo do carro (km/L)</label><input id="c1c" type="number" value="12" min="0.1" step="0.1"></div></div><div class="field"><label>Preço do combustível (R$/L)</label><input id="c1p" type="number" value="5.50" min="0" step="0.01"></div><div class="btn-row"><button class="btn" type="button" onclick="calc1()">Calcular custo</button></div><div class="results" id="r1"><h4>Resultado</h4><div class="stat-grid"><div class="stat"><div class="k">Litros necessários</div><div class="v" id="c1l">—</div></div><div class="stat hero"><div class="k">Custo total</div><div class="v" id="c1t">—</div></div><div class="stat"><div class="k">Custo por km</div><div class="v" id="c1k">—</div></div></div><div class="verdict ok" id="v1"></div></div><p class="formula">Fórmula: litros = distância ÷ consumo (km/L); custo = litros × preço (R$/L).</p></article>
+<article class="card"><p class="tag">Viagem</p><h3>Planejador de viagem</h3><p class="desc">Litros, custo, paradas para abastecer e tempo estimado da viagem.</p><div class="field-row"><div class="field"><label>Distância (km)</label><input id="c2d" type="number" value="600" min="0"></div><div class="field"><label>Consumo (km/L)</label><input id="c2c" type="number" value="12" min="0.1" step="0.1"></div></div><div class="field-row"><div class="field"><label>Preço (R$/L)</label><input id="c2p" type="number" value="5.50" min="0" step="0.01"></div><div class="field"><label>Tanque (litros)</label><input id="c2t" type="number" value="50" min="1"></div></div><div class="field"><label>Velocidade média (km/h)</label><input id="c2s" type="number" value="80" min="1"></div><div class="btn-row"><button class="btn" type="button" onclick="calc2()">Planejar viagem</button></div><div class="results" id="r2"><h4>Resultado</h4><div class="stat-grid"><div class="stat"><div class="k">Litros</div><div class="v" id="c2l">—</div></div><div class="stat hero"><div class="k">Custo total</div><div class="v" id="c2ct">—</div></div><div class="stat"><div class="k">Autonomia do tanque</div><div class="v" id="c2a">—</div></div><div class="stat"><div class="k">Paradas p/ abastecer</div><div class="v" id="c2n">—</div></div><div class="stat"><div class="k">Tempo de viagem</div><div class="v" id="c2h">—</div></div></div><div class="verdict ok" id="v2"></div></div><p class="formula">Fórmula: autonomia = tanque × consumo; paradas = teto(distância ÷ autonomia) − 1; tempo = distância ÷ velocidade média.</p></article>
+<article class="card"><p class="tag">Consumo</p><h3>Calculadora de consumo (km/L)</h3><p class="desc">Descubra o consumo real do seu carro com dois abastecimentos.</p><div class="field-row"><div class="field"><label>Quilômetros rodados (km)</label><input id="c3d" type="number" value="480" min="0"></div><div class="field"><label>Litros abastecidos (L)</label><input id="c3l" type="number" value="40" min="0.1" step="0.1"></div></div><div class="field"><label>Preço do litro (R$/L) <small>— opcional</small></label><input id="c3p" type="number" value="5.50" min="0" step="0.01"></div><div class="btn-row"><button class="btn" type="button" onclick="calc3()">Calcular consumo</button></div><div class="results" id="r3"><h4>Resultado</h4><div class="stat-grid"><div class="stat hero"><div class="k">Consumo</div><div class="v" id="c3c">—</div></div><div class="stat"><div class="k">Litros por 100 km</div><div class="v" id="c3h">—</div></div><div class="stat"><div class="k">Custo por km</div><div class="v" id="c3k">—</div></div></div><div class="verdict ok" id="v3"></div></div><p class="formula">Fórmula: consumo (km/L) = quilômetros ÷ litros; L/100 km = 100 ÷ km/L.</p></article>
+<article class="card"><p class="tag">Comparar</p><h3>Elétrico vs combustão</h3><p class="desc">Compare o custo mensal de rodar com gasolina e com eletricidade.</p><div class="field-row"><div class="field"><label>Quilômetros por mês (km)</label><input id="c4d" type="number" value="1500" min="0"></div><div class="field"><label>Consumo a gasolina (km/L)</label><input id="c4c" type="number" value="12" min="0.1" step="0.1"></div></div><div class="field-row"><div class="field"><label>Preço da gasolina (R$/L)</label><input id="c4p" type="number" value="5.50" min="0" step="0.01"></div><div class="field"><label>Consumo do elétrico (kWh/100 km)</label><input id="c4e" type="number" value="15" min="0.1" step="0.1"></div></div><div class="field"><label>Preço da eletricidade (R$/kWh)</label><input id="c4k" type="number" value="0.90" min="0" step="0.01"></div><div class="btn-row"><button class="btn" type="button" onclick="calc4()">Comparar custos</button></div><div class="results" id="r4"><h4>Resultado</h4><div class="stat-grid"><div class="stat"><div class="k">Custo mensal — gasolina</div><div class="v" id="c4g">—</div></div><div class="stat"><div class="k">Custo mensal — elétrico</div><div class="v" id="c4v">—</div></div><div class="stat hero"><div class="k">Economia mensal (elétrico)</div><div class="v" id="c4s">—</div></div></div><div class="verdict ok" id="v4"></div></div><p class="formula">Fórmula: gasolina = (km ÷ km/L) × R$/L; elétrico = (km ÷ 100 × kWh/100 km) × R$/kWh.</p></article>
+<article class="card wide"><p class="tag">Comparar</p><h3>Etanol vs gasolina — qual compensa?</h3><p class="desc">A regra dos 70%: compare o preço por quilômetro dos dois combustíveis.</p><div class="field-row"><div class="field"><label>Preço da gasolina (R$/L)</label><input id="c5g" type="number" value="5.80" min="0" step="0.01"></div><div class="field"><label>Preço do etanol (R$/L)</label><input id="c5e" type="number" value="3.90" min="0" step="0.01"></div></div><div class="field"><label>Consumo com gasolina (km/L)</label><input id="c5c" type="number" value="12" min="0.1" step="0.1"></div><div class="btn-row"><button class="btn" type="button" onclick="calc5()">Comparar etanol e gasolina</button></div><div class="results" id="r5"><h4>Resultado</h4><div class="stat-grid"><div class="stat"><div class="k">Relação etanol ÷ gasolina</div><div class="v" id="c5r">—</div></div><div class="stat"><div class="k">Custo por km — gasolina</div><div class="v" id="c5kg">—</div></div><div class="stat"><div class="k">Custo por km — etanol</div><div class="v" id="c5ke">—</div></div><div class="stat hero"><div class="k">Economia por km</div><div class="v" id="c5s">—</div></div></div><div class="verdict ok" id="v5"></div></div><p class="formula">Fórmula: consumo com etanol ≈ 70% do consumo com gasolina; custo por km = preço ÷ km/L. Etanol compensa quando a relação de preços é menor que 0,70.</p></article>
+</div></section>
+<section id="referencia"><h2>Tabela de referência: combustíveis no Brasil</h2><p class="section-sub">Características gerais dos combustíveis vendidos nos postos brasileiros. Use como referência — o preço e a qualidade variam por posto e por região.</p><div class="table-wrap"><table><tr><th>Combustível</th><th>Octanagem / característica</th><th>Onde é usado</th><th>Observação</th></tr>
+<tr><td>Gasolina comum</td><td>Octanagem mínima 93 RON (IAD 87)</td><td>Carros flex e a gasolina</td><td>A mais vendida; contém etanol anidro.</td></tr>
+<tr><td>Gasolina aditivada</td><td>Mesma base da comum, com aditivos detergentes</td><td>Carros flex e a gasolina</td><td>Aditivos ajudam a limpar bicos e válvulas.</td></tr>
+<tr><td>Etanol hidratado</td><td>Octanagem alta, cerca de 100+ RON</td><td>Carros flex</td><td>Rende menos km/L, mas costuma custar menos por litro.</td></tr>
+<tr><td>Diesel S10</td><td>Baixo teor de enxofre (10 ppm)</td><td>Caminhões, picapes e utilitários a diesel</td><td>Obrigatório em motores novos; menos poluente que o S500.</td></tr>
+<tr><td>Diesel S500</td><td>Teor de enxofre de 500 ppm</td><td>Veículos a diesel mais antigos</td><td>Sendo substituído pelo S10 na maioria dos postos.</td></tr>
+<tr><td>GNV (gás natural veicular)</td><td>Octanagem alta, cerca de 130 RON</td><td>Carros com kit GNV instalado</td><td>Custo por km geralmente menor; perde um pouco de potência.</td></tr>
+</table></div><p class="note">Referência geral: a gasolina brasileira contém etanol anidro misturado (percentual definido por lei e que pode mudar). O GNV exige kit instalado e vistoria. Sempre confira o preço na bomba antes de abastecer.</p></section>
+<section id="guias"><h2>Guias do posto</h2><p class="section-sub">Textos práticos para pagar menos, cuidar do carro e abastecer com segurança.</p><div class="guide-grid"><article class="guide"><p class="g-tag">Preço</p><h3>Como encontrar a gasolina mais barata perto de você</h3><p>O preço da gasolina pode variar mais de R$ 1,00 por litro entre postos da mesma cidade. Com um pouco de planejamento, dá para economizar centenas de reais por ano sem mud…</p><p class="guide-link"><a href="guides/gasolina-mais-barata-perto-de-voce.html">Ler o guia &rarr;</a></p></article>
+<article class="guide"><p class="g-tag">Serviços</p><h3>Serviços do posto explicados: carregamento EV, diesel, lava-rápido e ar</h3><p>O posto moderno é muito mais que bomba de combustível: tem carregador de carro elétrico, calibragem de pneus, lava-rápido, loja de conveniência e até troca de óleo. Enten…</p><p class="guide-link"><a href="guides/servicos-do-posto-explicados.html">Ler o guia &rarr;</a></p></article>
+<article class="guide"><p class="g-tag">Economia</p><h3>10 formas de economizar combustível</h3><p>Economizar combustível não é dirigir devagar o tempo todo: é eliminar desperdícios. Pequenas mudanças de hábito somam litros por mês — e centenas de reais por ano.…</p><p class="guide-link"><a href="guides/economizar-combustivel-10-formas.html">Ler o guia &rarr;</a></p></article>
+<article class="guide"><p class="g-tag">Comparar</p><h3>Diesel vs gasolina — o que saber</h3><p>Carros a diesel costumam rodar mais quilômetros por litro, mas custam mais na compra e na manutenção. Entenda as diferenças antes de escolher o seu próximo carro.…</p><p class="guide-link"><a href="guides/diesel-vs-gasolina.html">Ler o guia &rarr;</a></p></article>
+<article class="guide"><p class="g-tag">Elétrico</p><h3>Carregamento de carros elétricos em postos: o que esperar</h3><p>Abastecer um carro elétrico no posto é diferente de encher o tanque: leva mais tempo, o preço é por kWh e nem todo carregador serve para todo carro. Saiba o que esperar a…</p><p class="guide-link"><a href="guides/carregamento-carros-eletricos-postos.html">Ler o guia &rarr;</a></p></article>
+<article class="guide"><p class="g-tag">Segurança</p><h3>Dicas de segurança em postos à noite</h3><p>Abastecer à noite exige atenção redobrada: menos movimento, menos visibilidade e mais oportunidade para furtos. Com alguns cuidados simples, o risco cai muito.…</p><p class="guide-link"><a href="guides/seguranca-postos-a-noite.html">Ler o guia &rarr;</a></p></article>
+</div></section>
+<section id="faq"><h2>Perguntas frequentes</h2><p class="section-sub">Dúvidas comuns sobre preços, consumo e combustíveis.</p><div class="faq"><div class="faq-item"><button type="button">Como sei se o etanol compensa?<span class="chev">+</span></button><div class="answer">Divida o preço do etanol pelo preço da gasolina. Se o resultado for menor que 0,70, o etanol geralmente compensa — porque o etanol rende cerca de 70% dos km/L da gasolina. Use a calculadora “Etanol vs gasolina” desta página com o consumo real do seu carro.</div></div>
+<div class="faq-item"><button type="button">Por que o preço da gasolina muda tanto de um posto para outro?<span class="chev">+</span></button><div class="answer">O preço depende do custo de compra da distribuidora, dos impostos, do frete até o posto, da concorrência na região e da margem do posto. Postos em rodovias e em bairros de alto movimento costumam cobrar mais.</div></div>
+<div class="faq-item"><button type="button">O que é o consumo em km/L e como ele é medido?<span class="chev">+</span></button><div class="answer">É quantos quilômetros o carro anda com um litro de combustível. Para medir, encha o tanque, zere o hodômetro parcial, rode normalmente e, no próximo abastecimento, divida os quilômetros rodados pelos litros colocados.</div></div>
+<div class="faq-item"><button type="button">Carro elétrico é sempre mais barato que carro a gasolina?<span class="chev">+</span></button><div class="answer">Na maioria dos casos, o custo por quilômetro do elétrico é menor, porque a eletricidade custa menos por unidade de energia. Mas a conta completa inclui o preço do carro, a bateria, o carregamento em casa ou no posto e a manutenção. Use o comparador desta página.</div></div>
+<div class="faq-item"><button type="button">Abastecer à noite é mais barato?<span class="chev">+</span></button><div class="answer">Não há regra geral. Alguns postos fazem promoções em horários de menor movimento, mas o preço é definido por cada posto. O mais importante à noite é a segurança: prefira postos iluminados e movimentados.</div></div>
+<div class="faq-item"><button type="button">Gasolina aditivada vale a pena?<span class="chev">+</span></button><div class="answer">Para a maioria dos carros, a aditivada ajuda a manter o sistema de injeção limpo, mas a diferença de consumo é pequena. Se o seu carro roda bem com a comum e o manual não exige aditivada, a economia da comum pode valer mais.</div></div>
+</div></section>
+<section><div class="about"><h2>Sobre o Posto de Gasolina</h2><p>O Posto de Gasolina é um site informativo e gratuito, feito para motoristas brasileiros. Nossas calculadoras usam apenas os números que você digita — distância, consumo, preço e tanque — e não guardam nenhum dado. Os valores são estimativas: o consumo real muda com o trânsito, o ar-condicionado, a carga e o estilo de direção.</p><p>Aviso: os preços de combustíveis mudam todos os dias e variam por cidade e por posto. Confira sempre o preço na bomba antes de abastecer. Este site não vende combustível, não pertence a nenhuma rede de postos e não tem vínculo com distribuidoras. Em caso de dúvida sobre o seu carro, consulte o manual do fabricante ou um mecânico de confiança.</p></div></section>
+</main>
+<footer><div class="wrap"><div class="cols"><div><h4>Posto de Gasolina</h4><p>Guias e calculadoras gratuitas para motoristas brasileiros: custo de combustível, consumo em km/L, etanol vs gasolina e elétrico vs combustão.</p></div><div><h4>Guias</h4><ul><li><a href="guides/gasolina-mais-barata-perto-de-voce.html">Como encontrar a gasolina mais barata perto de você</a></li><li><a href="guides/servicos-do-posto-explicados.html">Serviços do posto explicados: carregamento EV, diesel, lava-rápido e ar</a></li><li><a href="guides/economizar-combustivel-10-formas.html">10 formas de economizar combustível</a></li><li><a href="guides/diesel-vs-gasolina.html">Diesel vs gasolina — o que saber</a></li><li><a href="guides/carregamento-carros-eletricos-postos.html">Carregamento de carros elétricos em postos: o que esperar</a></li><li><a href="guides/seguranca-postos-a-noite.html">Dicas de segurança em postos à noite</a></li></ul></div><div><h4>Calculadoras</h4><ul><li><a href="index.html#calculadoras">Calculadora de custo de combustível</a></li><li><a href="index.html#calculadoras">Elétrico vs combustão</a></li><li><a href="index.html#calculadoras">Etanol vs gasolina — qual compensa?</a></li></ul></div></div><p class="copy">© 2026 Posto de Gasolina — Conteúdo informativo e gratuito. Os preços e o consumo reais variam por posto, cidade e veículo.</p></div></footer>
+<script>
+function v(id){var e=document.getElementById(id);var x=parseFloat(String(e.value).replace(',','.'));return isNaN(x)?0:x;}
+function show(id){var e=document.getElementById(id);e.classList.add('show');}
+function set(id,t){document.getElementById(id).textContent=t;}
+function br(n,d){return n.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+document.querySelectorAll('.faq-item button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
+
+function calc1(){var d=v('c1d'),c=v('c1c'),p=v('c1p');if(!d||!c||!p){alert('Preencha distância, consumo e preço.');return;}var l=d/c,t=l*p;set('c1l',br(l,1)+' L');set('c1t','R$ '+br(t,2));set('c1k','R$ '+br(t/d,2));set('v1','Para '+br(d,0)+' km você precisa de '+br(l,1)+' litros, custando R$ '+br(t,2)+'.');show('r1');}
+function calc2(){var d=v('c2d'),c=v('c2c'),p=v('c2p'),t=v('c2t'),s=v('c2s');if(!d||!c||!p||!t||!s){alert('Preencha todos os campos.');return;}var l=d/c,ct=l*p,a=t*c,n=Math.max(0,Math.ceil(d/a)-1),h=d/s;set('c2l',br(l,1)+' L');set('c2ct','R$ '+br(ct,2));set('c2a',br(a,0)+' km');set('c2n',String(n));set('c2h',br(h,1)+' h');set('v2',n===0?'Você chega com um tanque só — sem paradas para abastecer.':'Você vai precisar de '+n+' parada(s) para abastecer no caminho.');show('r2');}
+function calc3(){var d=v('c3d'),l=v('c3l'),p=v('c3p');if(!d||!l){alert('Preencha os quilômetros e os litros.');return;}var c=d/l;set('c3c',br(c,2)+' km/L');set('c3h',br(100/c,2)+' L/100 km');set('c3k',p?('R$ '+br(p/c,2)):'—');set('v3',c>=13?'Consumo excelente para um carro a combustão.':(c>=10?'Consumo bom, dentro da média.':'Consumo alto — veja o guia com 10 formas de economizar combustível.'));show('r3');}
+function calc4(){var d=v('c4d'),c=v('c4c'),p=v('c4p'),e=v('c4e'),k=v('c4k');if(!d||!c||!p||!e||!k){alert('Preencha todos os campos.');return;}var g=(d/c)*p,ev=(d/100*e)*k,s=g-ev;set('c4g','R$ '+br(g,2));set('c4v','R$ '+br(ev,2));set('c4s','R$ '+br(s,2));set('v4',s>0?('O elétrico economiza cerca de R$ '+br(s,2)+' por mês só em energia — R$ '+br(s*12,2)+' por ano.'):'Com esses valores, a gasolina sai mais barata por mês. Confira o preço da eletricidade no seu plano.');show('r4');}
+function calc5(){var g=v('c5g'),e=v('c5e'),c=v('c5c');if(!g||!e||!c){alert('Preencha os preços e o consumo.');return;}var r=e/g,ec=c*0.7,kg=g/c,ke=e/ec,s=kg-ke;set('c5r',br(r,3));set('c5kg','R$ '+br(kg,3));set('c5ke','R$ '+br(ke,3));set('c5s','R$ '+br(Math.abs(s),3));set('v5',r<0.70?('Etanol compensa: a relação é '+br(r,3)+' (menor que 0,70) e cada km sai R$ '+br(s,3)+' mais barato.'):'Gasolina compensa: a relação é '+br(r,3)+' (acima de 0,70). Abasteça com gasolina desta vez.');show('r5');}
+</script>
+</body>
+</html>
